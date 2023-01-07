@@ -1,5 +1,6 @@
 // Описаний в документації
 import flatpickr from "flatpickr";
+import Notiflix from 'notiflix';
 // Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
 
@@ -25,7 +26,7 @@ const options = {
   onClose(selectedDates) {
     if (selectedDates[0] < Date.now()) {
       startTimer.disabled = true
-      alert("бери десь в майбутньому")
+      Notiflix.Notify.failure("бери десь в майбутньому")
     } else {
       startTimer.disabled = false
     }    
@@ -50,7 +51,7 @@ function timer() {
     minute.textContent = minutes
     second.textContent = seconds
 
-    if (dataTime <= 1000) {
+    if (selectDate <= 1000) {
       clearInterval(timerId)
     startTimer.disabled = false
 
